@@ -1,0 +1,35 @@
+## DynamoDB Model
+
+### Real-time Class Tasks Table
+
+**Purpose:** Stores real-time data about student progress in VR learning tasks.
+
+**Primary Key:**
+
+*   `classId` (string): Partition key - The ID of the class.
+*   `studentId` (string): Sort key - The ID of the student.
+
+**Attributes:**
+
+*   `studentName` (string): The name of the student.
+*   `taskId` (string): The ID of the task.
+*   `actionId` (string): The most recent action. Assuming tasks have a set of possible actions.
+*   `timeSpent` (number): The time spent on the task in seconds.
+*   `status` (string): The current status of the task (e.g., "not started", "in progress", "completed").
+*   `needsAssistance` (boolean): Indicates whether the student needs assistance based on their time spent.
+
+**Example Item:**
+
+```json
+{
+  "classId": "math101",
+  "studentId": "user123",
+  "studentName": "Lindsay Weir",
+  "taskId": "addition1",
+  "taskName": "Add these things",
+  "actionId": "pickUpBlock",
+  "actionName": "Pick up a block from the pile",
+  "timeSpent": 10,
+  "status": "in_progress",
+  "needsAssistance": false
+}

@@ -1,0 +1,25 @@
+## DynamoDB Model
+
+### Real-time Students Idle Table
+
+**Purpose:** Stores real-time data about students last activity time lapsed. This will include business logic about possible actions to be excluded.
+
+**Primary Key:**
+
+*   `classId` (string): Partition key - The ID of the class.
+*   `studentId` (string): Sort key - The ID of the student.
+
+**Attributes:**
+
+*   `studentName` (string): The name of the student.
+*   `timeLapsed` (number): The time spent on the task in seconds.
+
+**Example Item:**
+
+```json
+{
+  "classId": "math101",
+  "studentId": "user123",
+  "studentName": "Lindsay Weir",
+  "timeLapsed": 10
+}
