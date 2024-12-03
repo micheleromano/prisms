@@ -49,7 +49,7 @@ function RealTimeAssistance() {
     if (isLoading) return 'Loading...';
 
     const chartData = [
-        ['Student', 'Time Spent'],
+        ['Student', 'Time Spent (s)'],
         ...realTimeTasks.filter(task => task.needsAssistance).sort((a, b) => b.timeSpent - a.timeSpent).map(task => [task.studentName, task.timeSpent])
 
     ]
@@ -75,7 +75,8 @@ function RealTimeStudentIdle() {
 
     const chartData = [
         ['Student', 'Time Lapsed (s)'],
-        ...realTimeStudentIdle.map((student) => [student.studentName, student.timeLapsed]),
+        ...realTimeStudentIdle.sort((a, b) => b.timeLapsed - a.timeLapsed)
+            .map((student) => [student.studentName, student.timeLapsed]),
     ];
     if (chartData.length === 0) return null;
     return (
@@ -102,8 +103,9 @@ function RealTimeTasks({ status }: { status: 'in_progress' | 'not_started' }) {
     if (error) return 'An error has occurred';
 
     const chartData = [
-        ['Student', 'Time Spent'],
+        ['Student', 'Time Spent (s)'],
         ...realTimeTasks.filter(task => task.status === status)
+            .sort((a, b) => b.timeSpent - a.timeSpent)
             .map((task) => [`${task.studentName} ${task.taskId}`, task.timeSpent]),
     ];
     if (chartData.length === 0) return null;
@@ -116,7 +118,7 @@ function RealTimeTasks({ status }: { status: 'in_progress' | 'not_started' }) {
                     data={chartData}
                     options={{
                         title: `${t('timeSpent')} ${status}`,
-                        hAxis: { title: 'Time Spent' },
+                        hAxis: { title: 'Time Spent (s)' },
                         vAxis: {
                             title: 'Student and Task',
                             slantedText: true,

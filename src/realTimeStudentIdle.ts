@@ -4,7 +4,7 @@ import { type StudentIdle } from './types';
 // The real time student idle will call the data in DynamoDB that stores
 // current the last time a student made an action
 export const useRealTimeStudentIdle = (classId: string) => {
-    // return useQuery<Task[], Error>({
+    // return useQuery<StudentIdle[], Error>({
     //     queryKey: [], // we don't want any caching
     //     queryFn: async () => {
     //         const response = await fetch(`/api/classes/${classId}/realTimeStudentIdle`);
@@ -12,7 +12,8 @@ export const useRealTimeStudentIdle = (classId: string) => {
     //             throw new Error('There was a problem with the request')
     //         }
     //         return response.json();
-    //     }
+    //     },
+    //     refetchInterval: 5000,
     // })
     return {
         realTimeStudentIdle: realTimeStudentIdleData,

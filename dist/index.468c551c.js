@@ -28262,7 +28262,7 @@ function RealTimeAssistance() {
     const chartData = [
         [
             'Student',
-            'Time Spent'
+            'Time Spent (s)'
         ],
         ...realTimeTasks.filter((task)=>task.needsAssistance).sort((a, b)=>b.timeSpent - a.timeSpent).map((task)=>[
                 task.studentName,
@@ -28312,7 +28312,7 @@ function RealTimeStudentIdle() {
             'Student',
             'Time Lapsed (s)'
         ],
-        ...realTimeStudentIdle.map((student)=>[
+        ...realTimeStudentIdle.sort((a, b)=>b.timeLapsed - a.timeLapsed).map((student)=>[
                 student.studentName,
                 student.timeLapsed
             ])
@@ -28330,7 +28330,7 @@ function RealTimeStudentIdle() {
                     children: t('realTimeStudentsIdle')
                 }, void 0, false, {
                     fileName: "src/Dashboard.tsx",
-                    lineNumber: 84,
+                    lineNumber: 85,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactGoogleChartsDefault.default), {
@@ -28347,18 +28347,18 @@ function RealTimeStudentIdle() {
                     }
                 }, void 0, false, {
                     fileName: "src/Dashboard.tsx",
-                    lineNumber: 85,
+                    lineNumber: 86,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/Dashboard.tsx",
-            lineNumber: 83,
+            lineNumber: 84,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "src/Dashboard.tsx",
-        lineNumber: 82,
+        lineNumber: 83,
         columnNumber: 9
     }, this);
 }
@@ -28378,9 +28378,9 @@ function RealTimeTasks({ status }) {
     const chartData = [
         [
             'Student',
-            'Time Spent'
+            'Time Spent (s)'
         ],
-        ...realTimeTasks.filter((task)=>task.status === status).map((task)=>[
+        ...realTimeTasks.filter((task)=>task.status === status).sort((a, b)=>b.timeSpent - a.timeSpent).map((task)=>[
                 `${task.studentName} ${task.taskId}`,
                 task.timeSpent
             ])
@@ -28402,7 +28402,7 @@ function RealTimeTasks({ status }) {
                     ]
                 }, void 0, true, {
                     fileName: "src/Dashboard.tsx",
-                    lineNumber: 113,
+                    lineNumber: 115,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactGoogleChartsDefault.default), {
@@ -28411,7 +28411,7 @@ function RealTimeTasks({ status }) {
                     options: {
                         title: `${t('timeSpent')} ${status}`,
                         hAxis: {
-                            title: 'Time Spent'
+                            title: 'Time Spent (s)'
                         },
                         vAxis: {
                             title: 'Student and Task',
@@ -28424,18 +28424,18 @@ function RealTimeTasks({ status }) {
                     }
                 }, void 0, false, {
                     fileName: "src/Dashboard.tsx",
-                    lineNumber: 114,
+                    lineNumber: 116,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/Dashboard.tsx",
-            lineNumber: 112,
+            lineNumber: 114,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "src/Dashboard.tsx",
-        lineNumber: 111,
+        lineNumber: 113,
         columnNumber: 9
     }, this);
 }
@@ -28494,7 +28494,7 @@ function HistoricalClassDataChart() {
                             children: "Select Class"
                         }, void 0, false, {
                             fileName: "src/Dashboard.tsx",
-                            lineNumber: 164,
+                            lineNumber: 166,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _selectDefault.default), {
@@ -28509,7 +28509,7 @@ function HistoricalClassDataChart() {
                                     children: "Class 101"
                                 }, void 0, false, {
                                     fileName: "src/Dashboard.tsx",
-                                    lineNumber: 172,
+                                    lineNumber: 174,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _menuItemDefault.default), {
@@ -28517,19 +28517,19 @@ function HistoricalClassDataChart() {
                                     children: "Class 201"
                                 }, void 0, false, {
                                     fileName: "src/Dashboard.tsx",
-                                    lineNumber: 173,
+                                    lineNumber: 175,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/Dashboard.tsx",
-                            lineNumber: 165,
+                            lineNumber: 167,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/Dashboard.tsx",
-                    lineNumber: 163,
+                    lineNumber: 165,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactGoogleChartsDefault.default), {
@@ -28540,18 +28540,18 @@ function HistoricalClassDataChart() {
                     options: options
                 }, void 0, false, {
                     fileName: "src/Dashboard.tsx",
-                    lineNumber: 176,
+                    lineNumber: 178,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/Dashboard.tsx",
-            lineNumber: 162,
+            lineNumber: 164,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "src/Dashboard.tsx",
-        lineNumber: 161,
+        lineNumber: 163,
         columnNumber: 9
     }, this);
 }
@@ -28587,7 +28587,8 @@ const useRealTimeTasks = (classId)=>{
     //             throw new Error('There was a problem with the request')
     //         }
     //         return response.json();
-    //     }
+    //     },
+    //     refetchInterval: 5000
     // })
     return {
         realTimeTasks: realTimeTaskData,
@@ -28834,7 +28835,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useRealTimeStudentIdle", ()=>useRealTimeStudentIdle);
 const useRealTimeStudentIdle = (classId)=>{
-    // return useQuery<Task[], Error>({
+    // return useQuery<StudentIdle[], Error>({
     //     queryKey: [], // we don't want any caching
     //     queryFn: async () => {
     //         const response = await fetch(`/api/classes/${classId}/realTimeStudentIdle`);
@@ -28842,7 +28843,8 @@ const useRealTimeStudentIdle = (classId)=>{
     //             throw new Error('There was a problem with the request')
     //         }
     //         return response.json();
-    //     }
+    //     },
+    //     refetchInterval: 5000,
     // })
     return {
         realTimeStudentIdle: realTimeStudentIdleData,

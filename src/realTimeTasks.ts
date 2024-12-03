@@ -12,7 +12,8 @@ export const useRealTimeTasks = (classId: string) => {
     //             throw new Error('There was a problem with the request')
     //         }
     //         return response.json();
-    //     }
+    //     },
+    //     refetchInterval: 5000
     // })
     return {
         realTimeTasks: realTimeTaskData,
